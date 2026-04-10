@@ -1,0 +1,22 @@
+name: Mera Pehla GitHub Action
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  hello-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Code checkout karo
+        uses: actions/checkout@v4
+
+      - name: Hello print karo
+        run: echo "GitHub Actions chal raha hai!"
+
+      - name: System info dekho
+        run: uname -a
+
+      - name: Files dekho repo ki
+        run: ls -la
