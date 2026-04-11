@@ -1,0 +1,31 @@
+name: Conditionals Practice
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v4
+
+      - name: Pehla step — pass hoga
+        run: echo "Yeh step pass hoga"
+
+      - name: Doosra step — fail karate hain
+        run: exit 1
+
+      - name: Yeh sirf success pe chale
+        if: success()
+        run: echo "Sab theek hai!"
+
+      - name: Yeh sirf failure pe chale
+        if: failure()
+        run: echo "Kuch fail hua — yeh message dekh!"
+
+      - name: Yeh hamesha chale
+        if: always()
+        run: echo "Main hamesha chalta hun!"
