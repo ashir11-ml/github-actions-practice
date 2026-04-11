@@ -1,0 +1,28 @@
+name: Matrix Practice
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16, 18, 20]
+
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v4
+
+      - name: Node.js setup karo
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Version check karo
+        run: node --version
+
+      - name: Kaam karo
+        run: echo "App Node.js ${{ matrix.node-version }} pe chal rahi hai"
