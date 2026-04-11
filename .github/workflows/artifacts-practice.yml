@@ -1,0 +1,26 @@
+name: Artifacts Practice
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v4
+
+      - name: Report file banao
+        run: |
+          mkdir output
+          echo "Yeh meri pehli artifact hai" > output/report.txt
+          echo "Date: $(date)" >> output/report.txt
+          echo "Branch: $GITHUB_REF" >> output/report.txt
+
+      - name: Artifact upload karo
+        uses: actions/upload-artifact@v4
+        with:
+          name: meri-report
+          path: output/
