@@ -1,0 +1,14 @@
+name: Caller Workflow
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  call-docker:
+    uses: ./.github/workflows/reusable-docker.yml
+    with:
+      image-name: myapp
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
